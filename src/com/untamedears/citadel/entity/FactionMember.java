@@ -56,7 +56,6 @@ public class FactionMember implements Comparable {
         return result;
     }
 
-    @Override
     public int compareTo(Object o) {
         if (!(o instanceof FactionMember)) {
             throw new ClassCastException();

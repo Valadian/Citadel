@@ -36,6 +36,8 @@ public class ConfigManager {
 	private double acidBlockReinforcementTax = 0.00000001D;
     private Map<VerboseMsg, Boolean> verboseMessageSettings = new HashMap<VerboseMsg, Boolean>();
 
+    public double bypassLoss;
+    
 	public void load(){
 		Citadel.getPlugin().reloadConfig();
 		FileConfiguration config = Citadel.getPlugin().getConfig();
@@ -63,6 +65,7 @@ public class ConfigManager {
                 }
             }
         }
+        bypassLoss = config.getDouble("general.bypassLoss",0);
         cacheMaxAge = config.getLong("caching.max_age");
         cacheMaxChunks = config.getInt("caching.max_chunks");
         for (Object obj : config.getList("materials")) {

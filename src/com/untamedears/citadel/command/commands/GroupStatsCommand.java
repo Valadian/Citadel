@@ -22,7 +22,6 @@ public class GroupStatsCommand extends PlayerCommand {
         public SendResultsTask(QueryDbTask pt) {
             previousTask = pt;
         }
-        @Override
         public void run() {
             for (String line : previousTask.results) {
                 previousTask.sender.sendMessage(line);
@@ -38,7 +37,6 @@ public class GroupStatsCommand extends PlayerCommand {
             sender = s;
             groupName = gn;
         }
-        @Override
         public void run() {
             CommandUtils.formatGroupMembers(results, groupName);
             CommandUtils.formatReinforcements(results, groupName,

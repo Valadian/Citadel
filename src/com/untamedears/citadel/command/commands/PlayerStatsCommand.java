@@ -21,7 +21,6 @@ public class PlayerStatsCommand extends PlayerCommand {
         public SendResultsTask(QueryDbTask pt) {
             previousTask = pt;
         }
-        @Override
         public void run() {
             for (String line : previousTask.results) {
                 previousTask.sender.sendMessage(line);
@@ -37,7 +36,6 @@ public class PlayerStatsCommand extends PlayerCommand {
             sender = s;
             playerName = pn;
         }
-        @Override
         public void run() {
             GroupManager groupManager = Citadel.getGroupManager();
             Set<Faction> memberGroups = groupManager.getGroupsByMember(playerName);

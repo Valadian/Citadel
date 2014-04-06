@@ -20,7 +20,6 @@ public class StatsCommand extends PlayerCommand {
         public SendResultsTask(QueryDbTask pt) {
             previousTask = pt;
         }
-        @Override
         public void run() {
 		    previousTask.sender.sendMessage(
                 new StringBuilder().append("§cTotal Reinforcements:§e " ).append(previousTask.numReinforcements).toString());
@@ -36,7 +35,6 @@ public class StatsCommand extends PlayerCommand {
         public QueryDbTask(CommandSender s) {
             sender = s;
         }
-        @Override
         public void run() {
 		    ReinforcementManager reinforcementManager = Citadel.getReinforcementManager();
 		    numReinforcements = reinforcementManager.getReinforcementsAmount();

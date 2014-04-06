@@ -175,7 +175,6 @@ public class Faction implements Serializable, Comparable {
         return this.normalized_name.hashCode();
     }
 
-    @Override
     public int compareTo(Object o) {
         if (!(o instanceof Faction)) {
             throw new ClassCastException();

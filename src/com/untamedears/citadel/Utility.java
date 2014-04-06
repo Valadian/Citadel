@@ -360,7 +360,7 @@ public class Utility {
         if (reinforcement instanceof PlayerReinforcement) {
             PlayerReinforcement pr = (PlayerReinforcement)reinforcement;
             Citadel.verbose(VerboseMsg.ReinDestroyed, pr.getBlock().getLocation().toString());
-            if (rng.nextDouble() <= pr.getHealth()) {
+            if (Citadel.getConfigManager().bypassLoss + rng.nextDouble() <= pr.getHealth()) {
                 Location location = pr.getBlock().getLocation();
     	        ReinforcementMaterial material = pr.getMaterial();
                 location.getWorld().dropItem(location, material.getRequiredMaterials());

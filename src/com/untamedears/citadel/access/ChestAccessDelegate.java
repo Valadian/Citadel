@@ -33,6 +33,7 @@ public class ChestAccessDelegate extends AccessDelegate<MaterialData> {
     @Override
     protected void delegate() {
         reinforcement = null;
-        block = attachedChest;
+        if(attachedChest != null)
+        	block = attachedChest;
     }
 }

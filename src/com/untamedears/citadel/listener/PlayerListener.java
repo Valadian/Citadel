@@ -9,6 +9,8 @@ import static com.untamedears.citadel.Utility.sendMessage;
 import static com.untamedears.citadel.Utility.timeUntilMature;
 import static com.untamedears.citadel.Utility.wouldPlantDoubleReinforce;
 
+import java.util.logging.Logger;
+
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -52,6 +54,7 @@ import com.untamedears.citadel.events.CreateReinforcementEvent;
  * 7/18/12
  */
 public class PlayerListener implements Listener {
+    private static final Logger log = Logger.getLogger("Citadel");
 
     @EventHandler
     public void login(PlayerLoginEvent ple) {
@@ -209,10 +212,14 @@ public class PlayerListener implements Listener {
                         sendMessage(player, ChatColor.GREEN, sb.toString());
                     } else if(reinforcement.isAccessible(player)){
                         sb = new StringBuilder();
+                        if(block==null)
+                        {
+                        	log.info("[Citadel] block is null. Assuming immature = false");
+                        }
                         boolean immature =
                             timeUntilMature(reinforcement) != 0
                             && (Citadel.getConfigManager().maturationEnabled()
-                                || Citadel.getConfigManager().getAcidBlockType() == block.getTypeId());
+                                || (block!=null && Citadel.getConfigManager().getAcidBlockType() == block.getTypeId()));
                         boolean is_personal_group = false;
                         String groupName = "!NULL!";
                         if (group != null) {
